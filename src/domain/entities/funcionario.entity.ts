@@ -15,32 +15,26 @@ class Funcionario {
   @PrimaryGeneratedColumn('uuid')
   public id: string;
 
-  @Column({ type: 'text', length: 50, nullable: false })
+  @Column({ type: 'text', nullable: false })
   public nome: string;
 
-  @Column({ type: 'text', length: 20, nullable: false })
+  @Column({ type: 'text', nullable: false })
   public cargo: string;
 
-  @Column({ type: 'text', length: 255, nullable: false })
+  @Column({ type: 'text', nullable: false })
   public email: string;
 
-  @Column({ type: 'text', length: 20, nullable: false })
+  @Column({ type: 'text', nullable: false })
   public setor: string;
 
   @Column({ type: 'date', nullable: false })
   public dataNascimento: Date;
 
-  @Column({ type: 'text', length: 50, nullable: false })
+  @Column({ type: 'text', nullable: false })
   public matricula: string;
 
-  @Column({ type: 'text', length: 100, nullable: false })
-  private senhaHash: string;
-  public get getSenhaHash(): string {
-    return this.senhaHash;
-  }
-  public set setSenhaHash(value: string) {
-    this.senhaHash = value;
-  }
+  @Column({ type: 'text', nullable: false })
+  public senhaHash: string;
 
   @OneToMany(
     () => RegistroPrimario,
@@ -55,13 +49,13 @@ class Funcionario {
   public registroSecundario: RegistroSecundario;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  public createdAt: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  public updatedAt: Date;
 
   @DeleteDateColumn({ name: 'deleted_at' })
-  deletedAt: Date;
+  public deletedAt: Date;
 }
 
 export default Funcionario;

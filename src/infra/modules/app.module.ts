@@ -7,6 +7,7 @@ import { RegistroPrimarioModule } from './registroPrimario.module';
 import { RegistroSecundarioModule } from './registroSecundario.module';
 import { RegistroPrimario } from 'src/domain/entities/registroPrimario.entity';
 import { RegistroSecundario } from 'src/domain/entities/registroSecundario.entity';
+import { AuthModule } from '../../auth/auth.module';
 dotenv.config();
 
 @Module({
@@ -14,6 +15,7 @@ dotenv.config();
     FuncionarioModule,
     RegistroPrimarioModule,
     RegistroSecundarioModule,
+    AuthModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,

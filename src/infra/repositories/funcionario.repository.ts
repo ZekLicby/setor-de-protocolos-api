@@ -47,6 +47,14 @@ class FuncionarioRepository implements IFuncionarioRepository {
       throw new Error('Funcionário não encontrado.');
     }
   }
+
+  public async findOne(
+    email: string,
+  ): Promise<Funcionario | null> {
+    const queryOptions = { where: { email: email } };
+
+    return await this._funcionarioRepository.findOne(queryOptions);
+  }
 }
 
 export default FuncionarioRepository;
