@@ -10,8 +10,8 @@ dotenv.config();
 async function bootstrap() {
   const server = express();
   const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
-  const PORT = 3001;
+  const PORT = process.env.PGPORT || 3001;
   app.enableCors();
-  await app.listen(PORT);
+  await app.listen(PORT, '0.0.0.0');
 }
 bootstrap();
