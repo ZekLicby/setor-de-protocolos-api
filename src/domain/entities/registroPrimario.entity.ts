@@ -3,35 +3,37 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  ManyToOne,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import Funcionario from './funcionario.entity';
 
 @Entity({ name: 'FichasPrimarias' })
 export class RegistroPrimario {
   @PrimaryColumn('uuid')
   public id: string;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: false })
   public RA: string;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: false })
   public curso: string;
 
-  @Column({ type: 'date' })
+  @Column({ type: 'date', nullable: false })
   public encaminhado: Date;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: false })
   public fone: string;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: false })
   public orgao: string;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: false })
   public notas: string;
 
-  // fazer o relacionamento
-  // public fichaSecundaria: FichaSecundaria;
+  @ManyToOne(() => Funcionario, (funcionario) => funcionario.registroPrimario)
+  public funcionario: Funcionario;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

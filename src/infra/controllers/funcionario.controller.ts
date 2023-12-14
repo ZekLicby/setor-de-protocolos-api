@@ -8,10 +8,13 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
+  Request,
 } from '@nestjs/common';
 import FuncionarioDto from 'src/application/dtos/funcionario.dto';
 import FuncionarioService from 'src/application/services/funcionario.service';
 import Funcionario from 'src/domain/entities/funcionario.entity';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('funcionario')
 export class FuncionarioController {
@@ -93,4 +96,11 @@ export class FuncionarioController {
       );
     }
   }
+
+  //@UseGuards(AuthGuard('local'))
+  //@Post('login')
+  //async login(@Request() req: any) {
+  // console.log(req);
+  //  return await req.user
+  // }
 }

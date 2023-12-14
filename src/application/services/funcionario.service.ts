@@ -4,6 +4,7 @@ import IFuncionarioService from 'src/domain/services/ifuncionario.service';
 import FuncionarioRepository from 'src/infra/repositories/funcionario.repository';
 import FuncionarioDto from '../dtos/funcionario.dto';
 import FuncionarioMapper from '../mappers/funcionario.mapper';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 class FuncionarioService implements IFuncionarioService {
@@ -16,7 +17,7 @@ class FuncionarioService implements IFuncionarioService {
     funcionarioDto: FuncionarioDto,
   ): Promise<Funcionario> {
     const funcionario = this._funcionarioMapper.dtoToEntity(funcionarioDto);
-    funcionario.setSenhaHash = funcionarioDto.senhaHash;
+    funcionario.senhaHash = bcrypt.hashSync(funcionarioDto.senhaHash, 8);
 
     return await this._funcionarioRepository.create(funcionario);
   }
@@ -40,6 +41,10 @@ class FuncionarioService implements IFuncionarioService {
 
   public async deleteFuncionario(id: string): Promise<void> {
     return await this._funcionarioRepository.delete(id);
+  }
+
+  public async findOne(email: string): Promise<Funcionario | null> {
+    return this._funcionarioRepository.findOne(email);
   }
 }
 
