@@ -97,10 +97,10 @@ export class FuncionarioController {
     }
   }
 
-  @UseGuards(AuthGuard('local'))
-  @Post('login')
-  async login(@Request() req: any) {
-    console.log(req);
-    return await req.user
-  }
+  //@UseGuards(AuthGuard('local'))
+  //@Post('login')
+  //async login(@Request() req: any) {
+  // console.log(req);
+  //  return await req.user
+  // }
 }

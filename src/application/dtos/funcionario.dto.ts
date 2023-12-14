@@ -17,7 +17,7 @@ class FuncionarioDto {
   public setor: string;
 
   @IsDate()
-  public dataNascimento: Date;
+  public dataNascimento: string;
 
   @IsString()
   public matricula: string;
