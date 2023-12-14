@@ -27,7 +27,7 @@ class Funcionario {
   @Column({ type: 'text', nullable: false })
   public setor: string;
 
-  @Column({ type: 'string', nullable: false })
+  @Column({ type: 'text', nullable: false })
   public dataNascimento: string;
 
   @Column({ type: 'text', nullable: false })
